@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	div
+	h1	Well you got here ok!
+	h2= hero
+
+	if user
+		.alert.alert-success.animated.flipInX
+			i.fa.fa-check
+			strong Success!
+			|	You are logged in.
