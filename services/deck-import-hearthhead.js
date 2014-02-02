@@ -3,19 +3,26 @@ var cheerio = require('cheerio')
 
 
 exports.check = function(url){
-	return url.indexOf('hearthhead');
+	return url.indexOf('hearthhead') >= 0;
 }
 
 exports.run = function(html, callback){
+	if(!html) return callback('deck-import-hearthHead.run().dhh.10: called with no html.');
+	
 	var $ = cheerio.load(html);
-	console.log();
-
+	
 	var heroId =  $('.deckguide-hero', '.deckguide-cards').attr('data-class');
-	var hero = _.findWhere(classIds, { id: heroId });
+	if(!heroId) return callback('deck-import-hearthHead.run().dhh.15: no hero id on page.');
+
+	var hero = _.findWhere(classIds, { id: parseInt(heroId) });
+	if(!hero) return callback('deck-import-hearthHead.run().dhh.18: unknown heroId.');
+
+	var cards = _.map($('.deckguide-cards').children('.cards'), function(card){ return $(card).html();});
+	if(cards.length < 1) return callback('deck-import-hearthHead.run().dhh.21: no cards on page.');
 
 	var deck = {
-		hero: 'mage',
-		cards: $('.deckguide-cards .cards').html()
+		hero: hero.name,
+		cards: cards
 	};
 
 	callback(null, deck);
