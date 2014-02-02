@@ -1,9 +1,10 @@
 var cheerio = require('cheerio')
 	, _ = require('underscore');
 
+exports.name = "HearthHead"
 
 exports.check = function(url){
-	return url.indexOf('hearthhead') >= 0;
+	return url.toLowerCase().indexOf('hearthhead') >= 0;
 }
 
 exports.run = function(html, callback){

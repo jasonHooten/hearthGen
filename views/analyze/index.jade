@@ -2,8 +2,10 @@ extends ../layout
 
 block content
 	div
-	h1	Well you got here ok!
 	h2= hero
+	strong your card list...
+	each card in cards
+		p= card
 
 	if user
 		.alert.alert-success.animated.flipInX
