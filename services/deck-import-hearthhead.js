@@ -11,7 +11,6 @@ exports.run = function(html, callback){
 	
 	var cheerio = require('cheerio');
 	var $ = cheerio.load(html);
-	 console.log($('.wrapper').html());
 
 	var deckguide = $('.deckguide-cards');
 	

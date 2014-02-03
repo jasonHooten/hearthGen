@@ -9,11 +9,19 @@ exports.getIndex = function(req, res) {
 	var url = req.query.u;
 
 	deckImport.import(url, function(err, deck){
-		res.render('analyze/index', {
-	    	title: 'Analyze',
-	    	cards: deck.cards,
-	    	hero:  deck.hero
-	  	});
+
+		if(err){
+			res.render('error', {
+		    	title: 'Error',
+		    	error:  err
+	  		});
+		}else{
+			res.render('analyze/index', {
+		    	title: 'Analyze',
+		    	cards: deck.cards,
+		    	hero:  deck.hero
+		  	});
+		}
 	});
 	
 };

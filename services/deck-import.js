@@ -5,7 +5,7 @@ var request = require('request'),
 /*
  * Set included services
  */
-var _webServicesNames = ['hearthhead'];
+var _webServicesNames = ['hearthhead', 'hearthpwn'];
 var services =  _.map(_webServicesNames, function(name) {
     return require('./deck-import-' + name);
 });
