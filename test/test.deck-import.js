@@ -21,44 +21,47 @@ describe('getService(url)', function() {
 });
 
 describe('import(url, callback)', function() {  
-	it('should err  called with no url', function() {
+	it('should err  called with no url', function(done) {
 		deckImport.import(null, function(err){
 			expect(err).to.exist;
 			expect(err).to.have.string('di.19');
+			done();
 		});
 	});
 
-	it('should err no service availible.', function() {
+	it('should err no service availible.', function(done) {
 		deckImport.import('test', function(err){
 			expect(err).to.exist;
 			expect(err).to.have.string('di.22');
+			done();
 		});
 	});
 
-	it('should err no response from server.', function() {
+	it('should err no response from server.', function(done) {
 		deckImport.import('hearthheadasjajsknj', function(err){
 			expect(err).to.exist;
 			expect(err).to.have.string('di.25');
+			done();
 		});
 	});
 
-	it('should err no response 200 from server.', function() {
+	it('should err no response 200 from server.', function(done) {
 		deckImport.import('http://www.hearthhead.com/asjasfjkfjasf', function(err){
 			expect(err).to.exist;
-			console.log(err);
 			expect(err).to.have.string('di.26');
+			done();
 		});
 	});
 
-	it('should return a deck of class mage.', function() {
-		deckImport.import('http://www.hearthhead.com/deck=10036/mage-minion', function(err, deck){
+	it('should return a deck of class mage.', function(done) {
+		deckImport.import('http://www.google.com', function(err, deck){
 			expect(err).to.not.exist;
 
-			console.log(err);
 			expect(deck.hero).to.exist;
 			expect(deck.cards).to.exist;
 
 			expect(deck.hero).to.equal('mage');
+			done();
 		});
 	});
 });

@@ -23,9 +23,8 @@ exports.import = function(url, callback){
     
     request(url, function(error, response, body) {
         if(error) return callback('deck-import.import().di.25: ' + error);
-        //if (response.statusCode !== 200) return callback('deck-import.import().di.26: no response from server');
+        if (response.statusCode !== 200) return callback('deck-import.import().di.26: no response from server');
         
-        console.log(body);
         service.run(body, callback);
     });
 } 

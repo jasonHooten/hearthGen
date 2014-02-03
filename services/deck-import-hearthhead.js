@@ -1,5 +1,4 @@
-var cheerio = require('cheerio')
-	, _ = require('underscore');
+var _ = require('underscore');
 
 exports.name = "HearthHead"
 
@@ -10,15 +9,20 @@ exports.check = function(url){
 exports.run = function(html, callback){
 	if(!html) return callback('deck-import-hearthHead.run().dhh.10: called with no html.');
 	
+	var cheerio = require('cheerio');
 	var $ = cheerio.load(html);
+	 console.log($('.wrapper').html());
+
+	var deckguide = $('.deckguide-cards');
 	
-	var heroId =  $('.deckguide-hero', '.deckguide-cards').attr('data-class');
+
+	var heroId =  $('.deckguide-hero', deckguide).attr('data-class');
 	if(!heroId) return callback('deck-import-hearthHead.run().dhh.15: no hero id on page.');
 
 	var hero = _.findWhere(classIds, { id: parseInt(heroId) });
 	if(!hero) return callback('deck-import-hearthHead.run().dhh.18: unknown heroId.');
 
-	var cards = _.map($('.deckguide-cards').children('.cards'), function(card){ return $(card).html();});
+	var cards = _.map($('.cards', deckguide), function(card){ return $(card).html();});
 	if(cards.length < 1) return callback('deck-import-hearthHead.run().dhh.21: no cards on page.');
 
 	var deck = {

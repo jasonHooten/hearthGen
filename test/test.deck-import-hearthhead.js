@@ -62,7 +62,7 @@ describe('run(html, callback)', function() {
 		});
 	});
 
-	it('should return err if no hero html', function() {
+	it('should return a warrior with 2 cards', function() {
 		hearthHead.run('<div class="deckguide-cards">' +
 							'<div class="deckguide-hero" data-class="1"></div>' +
 						'</div>' +
