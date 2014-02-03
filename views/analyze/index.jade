@@ -1,12 +1,19 @@
 extends ../layout
 
+
+
 block content
 	div
-	h2= hero
-	strong your card list...
-	each card in cards
-		p= card.name + ' x' + card.number 
+		h2= hero
+		strong your card list...
+		each card in cards
+			p= card.name + ' x' + card.number
 
+		script.
+			$(document).ready(function() {
+				var cardList = '#{JSON.stringify(cards)}';
+				alert(cardList);
+			});
 	if user
 		.alert.alert-success.animated.flipInX
 			i.fa.fa-check
