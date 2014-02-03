@@ -9,13 +9,11 @@ exports.getIndex = function(req, res) {
 	var url = req.query.u;
 
 	deckImport.import(url, function(err, deck){
+		if(err) analysisError(err, res);
+		if(!err){
+			
+			
 
-		if(err){
-			res.render('error', {
-		    	title: 'Error',
-		    	error:  err
-	  		});
-		}else{
 			res.render('analyze/index', {
 		    	title: 'Analyze',
 		    	cards: deck.cards,
@@ -38,3 +36,13 @@ exports.postIndex = function(req, res) {
 	}
   	res.redirect('/analyze?u=' + req.body.url);
 };
+
+
+analysisError = function(err, res) {
+	res.render('error', {
+    	title: 'Error',
+    	error:  err
+	});
+}
+
+

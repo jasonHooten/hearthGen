@@ -5,7 +5,7 @@ block content
 	h2= hero
 	strong your card list...
 	each card in cards
-		p= card
+		p= card.name + ' x' + card.number 
 
 	if user
 		.alert.alert-success.animated.flipInX

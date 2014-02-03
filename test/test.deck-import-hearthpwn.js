@@ -41,7 +41,7 @@ describe('run(html, callback)', function() {
 
 	it('should return a deck with cards test', function(done) {
 		hearthpwn.run('<table class="listing-cards-tabularz">' +
-							'<tr> <td>' +
+							'<tr> <td class="col-name">' +
 								 '<a>test</a>' +
 							'</td></tr>' +
 						'</div>', function(err, deck){
@@ -51,14 +51,14 @@ describe('run(html, callback)', function() {
 			expect(deck.hero).to.exist;
 			expect(deck.cards).to.exist;
 
-			expect(deck).to.eql({ hero: 'mage', cards: ['test']});
+			expect(deck).to.eql({ hero: 'mage', cards: [{name:'test', number: 1}]});
 			done();
 		});
 	});
 
 	it('should return a deck with cards test', function(done) {
 		hearthpwn.run('<table class="list listing-cards-tabularz">' +
-							'<tr> <td>' +
+							'<tr> <td class="col-name">' +
 								 '<a>test</a>' +
 							'</td></tr>' +
 						'</div>', function(err, deck){
@@ -68,7 +68,7 @@ describe('run(html, callback)', function() {
 			expect(deck.hero).to.exist;
 			expect(deck.cards).to.exist;
 
-			expect(deck).to.eql({ hero: 'mage', cards: ['test']});
+			expect(deck).to.eql({ hero: 'mage', cards: [{ name: 'test', number: 1}]});
 			done();
 		});
 	});
@@ -81,7 +81,7 @@ describe('run(html, callback)', function() {
 			expect(deck.hero).to.exist;
 			expect(deck.cards).to.exist;
 
-			expect(deck).to.eql({ hero: 'mage', cards: ['Bloodmage Thalnos']});
+			expect(deck).to.eql({ hero: 'mage', cards: [{name: 'Bloodmage Thalnos', number: 2}]});
 			done();
 		});
 	});
@@ -113,7 +113,7 @@ var testHtml = '<table class="listing listing-cards-tabularz b-table b-table-a" 
     '</thead>'+
     '<tbody>'+
         '<tr class="even"><td class="col-name">'+
-			'<b style="font-size: 110%"><a href="/cards/525-bloodmage-thalnos" class="rarity-5">Bloodmage Thalnos</a></b>× 1</td>'+
+			'<b style="font-size: 110%"><a href="/cards/525-bloodmage-thalnos" class="rarity-5">Bloodmage Thalnos</a></b> × 2</td>'+
 		'</tr>'+
     '</tbody>'+
 '</table>';
