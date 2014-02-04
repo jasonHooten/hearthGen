@@ -11,8 +11,7 @@ block content
 
 		script.
 			$(document).ready(function() {
-				var cardList = '#{_.map(cards, function(num){ return cards.number + ', '; });}';
-				alert(cardList);
+				var stringList = !{JSON.stringify(cards)};
 			});
 	if user
 		.alert.alert-success.animated.flipInX
