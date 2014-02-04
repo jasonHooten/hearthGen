@@ -1,4 +1,5 @@
-var deckImport = require('../services/deck-import');
+var deckImport = require('../services/deck-import'),
+	_ = require('underscore');
 
 
 /**
@@ -11,13 +12,11 @@ exports.getIndex = function(req, res) {
 	deckImport.import(url, function(err, deck){
 		if(err) analysisError(err, res);
 		if(!err){
-			
-			
-
 			res.render('analyze/index', {
 		    	title: 'Analyze',
 		    	cards: deck.cards,
-		    	hero:  deck.hero
+		    	hero:  deck.hero,
+		    	_: _
 		  	});
 		}
 	});

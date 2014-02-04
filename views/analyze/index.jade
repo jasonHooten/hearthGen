@@ -11,11 +11,10 @@ block content
 
 		script.
 			$(document).ready(function() {
-				var cardList = '#{JSON.stringify(cards)}';
+				var cardList = '#{_.map(cards, function(num){ return cards.number + ', '; });}';
 				alert(cardList);
 			});
 	if user
 		.alert.alert-success.animated.flipInX
 			i.fa.fa-check
-			strong Success!
-			|	You are logged in.
+			strong You are logged in.
