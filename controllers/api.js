@@ -62,7 +62,7 @@ exports.getFacebook = function(req, res, next) {
 exports.getGithub = function(req, res) {
   var token = _.findWhere(req.user.tokens, { kind: 'github' });
   var github = new Github({ token: token.accessToken });
-  var repo = github.getRepo('sahat', 'requirejs-library');
+  var repo = github.getRepo('jasonhooten', 'hearthGen');
   repo.show(function(err, repo) {
     res.render('api/github', {
       title: 'GitHub API',
@@ -87,7 +87,7 @@ exports.getTwitter = function(req, res, next) {
     access_token: token.accessToken,
     access_token_secret: token.tokenSecret
   });
-  T.get('search/tweets', { q: 'hackathon since:2013-01-01', geocode: '40.71448,-74.00598,5mi', count: 50 }, function(err, reply) {
+  T.get('search/tweets', { q: 'HearthGen since:2013-01-01', count: 50 }, function(err, reply) {
     if (err) return next(err);
     res.render('api/twitter', {
       title: 'Twitter API',

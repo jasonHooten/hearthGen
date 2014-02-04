@@ -36,8 +36,8 @@ exports.postContact = function(req, res) {
   var from = req.body.email;
   var name = req.body.name;
   var body = req.body.message;
-  var to = 'you@email.com';
-  var subject = 'API Example | Contact Form';
+  var to = 'jason.hooten@gmail.com';
+  var subject = 'Contact Form';
 
   var email = new sendgrid.Email({
     to: to,
