@@ -1,5 +1,4 @@
 var secrets = require('../config/secrets');
-var sendgrid  = require('sendgrid')(secrets.sendgrid.user, secrets.sendgrid.password);
 
 /**
  * GET /contact
@@ -39,19 +38,7 @@ exports.postContact = function(req, res) {
   var to = 'jason.hooten@gmail.com';
   var subject = 'Contact Form';
 
-  var email = new sendgrid.Email({
-    to: to,
-    from: from,
-    subject: subject,
-    text: body + '\n\n' + name
-  });
 
-  sendgrid.send(email, function(err) {
-    if (err) {
-      req.flash('errors', { msg: err.message });
-      return res.redirect('/contact');
-    }
-    req.flash('success', { msg: 'Email has been sent successfully!' });
-    res.redirect('/contact');
-  });
+  req.flash('success', { msg: 'Email has been sent successfully!' });
+  res.redirect('/contact');
 };

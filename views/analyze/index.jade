@@ -5,13 +5,17 @@ extends ../layout
 block content
 	div
 		h2= hero
-		strong your card list...
-		each card in cards
-			p= card.name + ' x' + card.number
+		
+		.pull-left
+			strong your card list...
+			each card in cards
+				p= card.name + ' x' + card.number
+
+		canvas(id="manaCost", width="400", height="400", class="pull-right")
 
 		script.
 			$(document).ready(function() {
-				var stringList = !{JSON.stringify(cards)};
+				hearthGen.manaCost(!{JSON.stringify(manaCost)});
 			});
 	if user
 		.alert.alert-success.animated.flipInX

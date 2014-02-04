@@ -12,12 +12,17 @@ exports.getIndex = function(req, res) {
 	deckImport.import(url, function(err, deck){
 		if(err) analysisError(err, res);
 		if(!err){
+
+
+			var manaCost = [5, 7, 5, 6, 2, 3, 1];
+
 			res.render('analyze/index', {
-		    	title: 'Analyze',
-		    	cards: deck.cards,
-		    	hero:  deck.hero,
-		    	_: _
-		  	});
+				title: 'Analyze',
+				manaCost: manaCost,
+				cards: deck.cards,
+				hero:  deck.hero,
+				_: _
+			});
 		}
 	});
 	
@@ -31,17 +36,17 @@ exports.postIndex = function(req, res) {
 	if (errors) {
 		console.log(errors);
 		res.redirect('/');
-	    // What do to if there are errors?
+		// What do to if there are errors?
 	}
-  	res.redirect('/analyze?u=' + req.body.url);
+	res.redirect('/analyze?u=' + req.body.url);
 };
 
 
 analysisError = function(err, res) {
 	res.render('error', {
-    	title: 'Error',
-    	error:  err
+		title: 'Error',
+		error:  err
 	});
-}
+};
 
 
