@@ -1,5 +1,6 @@
 var request = require('request'),
-    _ = require('underscore');
+    _ = require('underscore'),
+    hc_repo = require("hearthstone-card-repo");
 
 
 /*
@@ -9,6 +10,18 @@ var _webServicesNames = ['hearthhead', 'hearthpwn'];
 var services =  _.map(_webServicesNames, function(name) {
     return require('./deck-import-' + name);
 });
+
+
+exports.load = function(cardNames, callback){
+    var deck = _.map(cardNames, function(cardName){
+        var card = hc_repo.getByName(cardName.name);
+        _.extend(card, { number: cardName.number });
+        _.extend(card, { url: hc_repo.getLink(card) });
+        return card;
+    });
+    callback(null, deck);
+};
+
 
 
 /*
