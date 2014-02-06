@@ -27,7 +27,7 @@ exports.import = function(url, callback){
         
         service.run(body, callback);
     });
-} 
+};
 
 
 getService = exports.getService = function(url){
@@ -38,7 +38,7 @@ getService = exports.getService = function(url){
     });
 
     return service;
-} 
+};
 
 
 
