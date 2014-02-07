@@ -7,12 +7,18 @@ block content
 		h2= hero		
 		.pull-left
 			each card in cards
-				p= card.name + ' x' + card.number
+				div
+					a(href=card.url, rel='item='+ card.id)= card.name
+					span= ' x' + card.number
 
 		div.pull-left
-			div(id="manaCost", width="310", height="150", class="pull-left")
+			div(id="c_manaCost", class="default-chart pull-left")
+			div(id="c_attack", class="default-chart pull-left")
+			div(id="c_health", class="default-chart pull-left")
 
 		script.
 			$(document).ready(function() {
-				hearthGen.manaCost(!{JSON.stringify(manaCost)});
+				hearthGen.manaCost(!{JSON.stringify(manaList)});
+				hearthGen.attackMinion(!{JSON.stringify(attackList)});
+				hearthGen.healthMinion(!{JSON.stringify(healthList)});
 			});

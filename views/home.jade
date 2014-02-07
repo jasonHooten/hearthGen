@@ -1,12 +1,24 @@
 extends layout
 
 block content
-  div#home
-    h1 Upload your deck. We'll analyze it! 
+	div#home
+		h1 Upload your deck. We'll analyze it! 
 
-    form(action='analyze', method='POST')
-      .form-group
-        .input-group
-          input.form-control.input-lg(type='url', name='url', id='url', autofocus=true, placeholder='e.g. http://www.hearthhead.com/deck=10036/mage-minion')
-          span.input-group-btn
-            button.btn.btn-default.btn-lg(type='submit') Analyze
+		form(action='analyze', method='POST')
+			.form-group
+				.input-group
+					input.form-control.input-lg(type='url', name='url', id='url', autofocus=true, placeholder='e.g. http://www.hearthpwn.com/decks/31109-minion-mage')
+					span.input-group-btn
+						button.btn.btn-default.btn-lg(type='submit') Analyze
+	
+	div.container(style="margin-top: 80px")
+		div.col-lg-6
+			div
+				h3.text-center Build your deck on 
+					a(href='http://www.hearthpwn.com/deckbuilder') HearthPwn.
+				img(src='/img/chose.png', class='img-rounded', style='margin: 20px; border: 1px solid #dddddd;', height='385', width='500')
+			
+		div.col-lg-6
+			h3.text-center Then copy it's link into the search bar.
+			img(src='/img/summary.png', class='img-rounded', style='margin: 20px; border: 1px solid #dddddd;', height='385', width='500')
+			

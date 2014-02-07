@@ -6,9 +6,14 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') HearthGen
+      a.navbar-brand(href='/') Hearth-Gen 
+        i beta
     
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=title=='Contact'?'active':undefined)
+        li
           a(href='/analyze?u=http://www.hearthpwn.com/decks/29315-ultimate-control') Test Me Out!
+      
+      form.navbar-form.navbar-right(action='analyze', method='POST')
+        input(type="text" name='url' class="form-control col-lg-10" placeholder="analyze")    
+      

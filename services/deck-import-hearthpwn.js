@@ -23,7 +23,7 @@ exports.run = function(html, callback){
 	}
 
 	var deck = {
-		hero: 'mage',
+		hero: 'druid',
 		cards: cards
 	};
 
