@@ -13,8 +13,6 @@ html
 
     script(src='/js/lib/jquery.js?v=#{cacheBuster}')
     script(src='/js/lib/bootstrap.js?v=#{cacheBuster}')
-    script(src='/js/lib/Chart.js?v=#{cacheBuster}')
-    script(src='/js/main.js?v=#{cacheBuster}')
   body
     #wrap
       include partials/navigation
@@ -22,3 +20,5 @@ html
         include partials/flash
         block content
     include partials/footer
+    script(src='http://code.highcharts.com/highcharts.js')
+    script(src='/js/main.js?v=#{cacheBuster}')

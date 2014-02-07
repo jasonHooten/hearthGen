@@ -4,14 +4,13 @@ extends ../layout
 
 block content
 	div
-		h2= hero
-		
+		h2= hero		
 		.pull-left
-			strong your card list...
 			each card in cards
 				p= card.name + ' x' + card.number
 
-		canvas(id="manaCost", width="400", height="400", class="pull-right")
+		div.pull-left
+			div(id="manaCost", width="310", height="150", class="pull-left")
 
 		script.
 			$(document).ready(function() {

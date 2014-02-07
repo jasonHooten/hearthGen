@@ -10,19 +10,51 @@ $(document).ready(function() {
     
     //Public Method
     hearthGen.manaCost = function(data){
-        var reportData = {
-            labels : ["0","1","2","3","4","5","6","7","8","9","10"],
-            datasets : [
-                {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    data : data
+        $('#manaCost').highcharts({
+            title: {
+                text: 'Mana Cost',
+                margin: 0,
+                style: {
+                    color: '#2d2d2d',
+                    fontSize: '14px',
                 }
-            ]
-        };
-
-        var ctx = $("#manaCost").get(0).getContext("2d");
-        var myNewChart = new Chart(ctx).Bar(reportData);
+            },
+            credits: {
+                enabled: false
+            },
+            legend: {
+                enabled: false
+            },
+            xAxis: {
+                categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'mana'
+                },
+                min: 0,
+                max: 10,
+                allowDecimals: false,
+                gridLineWidth: 0
+            },
+            plotOptions: {
+                series: {
+                    color: '#446E9B'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.y +'</b> cards cost <b>'+ this.x +'</b> mana.';
+                }
+            },
+            series: [{
+                name: 'Mana Cost',
+                data: data
+            }]
+        });
     };
 
     
