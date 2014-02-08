@@ -1,0 +1,14 @@
+block content
+	.row
+		div#c_manaCost.default-chart.col-sm-12.col-md-4
+		div#c_attack.default-chart.col-sm-12.col-md-4
+		div#c_health.default-chart.col-sm-12.col-md-4
+	.row
+		div#c_distri.default-chart.col-xs-12.col-sm-6.col-md-3
+	script.
+		$(document).ready(function() {
+			hearthGen.manaCost(!{JSON.stringify(manaList)});
+			hearthGen.attackMinion(!{JSON.stringify(attackList)});
+			hearthGen.healthMinion(!{JSON.stringify(healthList)});
+			hearthGen.cardDistri(!{JSON.stringify(healthList)});
+		});

@@ -2,7 +2,8 @@ var deckImport = require('../services/deck-import'),
 	_ = require('underscore'),
 	manaService = require("./../services/analytics/mana"),
 	attackService = require("./../services/analytics/attack"),
-	healthService = require("./../services/analytics/health");
+	healthService = require("./../services/analytics/health"),
+	startingHandService = require("./../services/analytics/startingHand");
 
 
 /**
@@ -22,6 +23,7 @@ exports.getIndex = function(req, res) {
 					manaList: manaService.list(deck),
 					attackList: attackService.list(deck),
 					healthList: healthService.list(deck),
+					startingHand: startingHandService.list(deck),
 					cards: deck,
 					hero:  cardNames.hero,
 					_: _

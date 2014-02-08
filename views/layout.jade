@@ -13,7 +13,9 @@ html
 
     script(src='/js/lib/jquery.js?v=#{cacheBuster}')
     script(src='/js/lib/bootstrap.js?v=#{cacheBuster}')
-  body
+  
+  - var heroIcon = ( hero ? 'background-image: url("/img/class-image-' + hero + '.png");' : '')
+  body.hero-image(style=heroIcon)
     #wrap
       include partials/navigation
       include partials/flash
@@ -23,4 +25,4 @@ html
     script(src='/js/main.js?v=#{cacheBuster}')
     script(src='http://static.wowhead.com/widgets/power.js')
     script.
-      var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true };
+      var wowhead_tooltips = { "colorlinks": false, "iconizelinks": false, "renamelinks": false };

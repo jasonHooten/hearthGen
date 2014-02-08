@@ -17,10 +17,11 @@ $(document).ready(function() {
                 plotBackgroundColor: {
                     linearGradient: [0, 0, 500, 500],
                     stops: [
-                        [0, 'rgb(255, 255, 255)'],
+                        [0, 'rgba(255, 255, 255, 0.1)'],
                         [1, '#3399F3']
                     ]
-                }
+                },
+                backgroundColor:'rgba(255, 255, 255, 0.1)'
             },
             title: {
                 text: 'Mana Cost',
@@ -87,10 +88,11 @@ $(document).ready(function() {
                 plotBackgroundColor: {
                     linearGradient: [0, 0, 500, 500],
                     stops: [
-                        [0, 'rgb(255, 255, 255)'],
+                        [0, 'rgba(255, 255, 255, 0.1)'],
                         [1, '#bf9853']
                     ]
-                }
+                },
+                backgroundColor:'rgba(255, 255, 255, 0.1)'
             },
             title: {
                 text: 'Attack of Minions',
@@ -157,10 +159,11 @@ $(document).ready(function() {
                 plotBackgroundColor: {
                     linearGradient: [0, 0, 500, 500],
                     stops: [
-                        [0, 'rgb(255, 255, 255)'],
+                        [0, 'rgba(255, 255, 255, 0.1)'],
                         [1, '#CD0200']
                     ]
-                }
+                },
+                backgroundColor:'rgba(255, 255, 255, 0.1)'
             },
             title: {
                 text: 'Health of Minions',
@@ -225,7 +228,8 @@ $(document).ready(function() {
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
-                plotShadow: false
+                plotShadow: false,
+                backgroundColor:'rgba(255, 255, 255, 0.1)'
             },
             title: {
                 text: 'Minions vs. Spells'
@@ -233,6 +237,8 @@ $(document).ready(function() {
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
+
+
             credits: {
                 enabled: false
             },
