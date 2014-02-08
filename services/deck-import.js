@@ -20,7 +20,6 @@ exports.load = function(cardNames, callback){
         return card;
     });
 
-
     callback(null, hc_repo.sortByQuality(deck));
 };
 

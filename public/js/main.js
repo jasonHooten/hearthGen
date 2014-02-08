@@ -10,7 +10,7 @@ $(document).ready(function() {
     
     //////////////////////////////////////////////////////////////////////////////////////////
     // Mana distribution (line)
-    hearthGen.manaCost = function(data){
+    hearthGen.manaCost = function(data, ave){
         $('#c_manaCost').highcharts({
             chart: {
                 type: 'line',
@@ -40,7 +40,7 @@ $(document).ready(function() {
             xAxis: {
                 categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                 title: {
-                    text: 'Average: <b>' + 4 + '</b>'
+                    text: 'Average: <b>' + ave + '</b>'
                 }
             },
             yAxis: {
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     //////////////////////////////////////////////////////////////////////////////////////////
     // Attack distribution (line)
-    hearthGen.attackMinion = function(data){
+    hearthGen.attackMinion = function(data, ave){
         $('#c_attack').highcharts({
             chart: {
                 type: 'line',
@@ -111,7 +111,7 @@ $(document).ready(function() {
             xAxis: {
                 categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                 title: {
-                    text: 'Average: <b>' + 3 + '</b>'
+                    text: 'Average: <b>' + ave + '</b>'
                 }
             },
             yAxis: {
@@ -152,7 +152,7 @@ $(document).ready(function() {
 
     //////////////////////////////////////////////////////////////////////////////////////////
     // Health distribution (line)
-    hearthGen.healthMinion = function(data){
+    hearthGen.healthMinion = function(data, ave){
         $('#c_health').highcharts({
             chart: {
                 type: 'line',
@@ -182,7 +182,7 @@ $(document).ready(function() {
             xAxis: {
                 categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
                 title: {
-                    text: 'Average: <b>' + 3 + '</b>'
+                    text: 'Average: <b>' + ave + '</b>'
                 }
             },
             yAxis: {
@@ -223,7 +223,7 @@ $(document).ready(function() {
 
     //////////////////////////////////////////////////////////////////////////////////////////
     // Minion distribution (Pie)
-    hearthGen.cardDistri = function(data){
+    hearthGen.cardTypes = function(data){
         $('#c_distri').highcharts({
             chart: {
                 plotBackgroundColor: null,
@@ -235,7 +235,7 @@ $(document).ready(function() {
                 text: 'Minions vs. Spells'
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                pointFormat: '{series.name}: <b>{point.y} ({point.percentage:.1f}%)</b>'
             },
 
 
@@ -257,7 +257,7 @@ $(document).ready(function() {
                         enabled: true,
                         color: '#000000',
                         connectorColor: '#000000',
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        format: '<b>{point.name}</b>: {point.y} | {point.percentage:.1f} %'
                     }
                 }
             },
@@ -265,8 +265,8 @@ $(document).ready(function() {
                 type: 'pie',
                 name: 'Cards',
                 data: [
-                    ['Spells',  13],
-                    ['Minions',   17]
+                    ['Spells',  data.spell],
+                    ['Minions',   data.minion]
                 ]
             }]
         });

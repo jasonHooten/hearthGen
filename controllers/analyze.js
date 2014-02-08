@@ -1,8 +1,7 @@
 var deckImport = require('../services/deck-import'),
 	_ = require('underscore'),
-	manaService = require("./../services/analytics/mana"),
-	attackService = require("./../services/analytics/attack"),
-	healthService = require("./../services/analytics/health"),
+	listService = require("./../services/analytics/list"),
+	averagesService = require("./../services/analytics/averages"),
 	startingHandService = require("./../services/analytics/startingHand");
 
 
@@ -15,20 +14,31 @@ exports.getIndex = function(req, res) {
 
 	deckImport.import(url, function(err, cardNames){
 		if(err) analysisError(err, res);
+		
 		deckImport.load(cardNames.cards, function(err, deck){
 			if(err) analysisError(err, res);
+			
 			if(!err){
 				res.render('analyze/index', {
-					title: 'Analyze',
-					manaList: manaService.list(deck),
-					attackList: attackService.list(deck),
-					healthList: healthService.list(deck),
+					//add underscore to the views
+					_: _,
+					//single numbers
+					manaAverage: Math.round(averagesService.mana(deck)),
+					attackAverage: Math.round(averagesService.attack(deck)),
+					healthAverage: Math.round(averagesService.health(deck)),
+					//lists for line graphs
+					manaList: listService.mana(deck),
+					attackList: listService.attack(deck),
+					healthList: listService.health(deck),
+					cardTypeList: listService.cardType(deck),
+					//starting hand
 					startingHand: startingHandService.list(deck),
 					cards: deck,
 					hero:  cardNames.hero,
-					_: _
+					
 				});
 			}
+
 		});
 	});
 };
