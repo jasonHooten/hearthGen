@@ -8,7 +8,8 @@ $(document).ready(function() {
 
 (function( hearthGen, $, undefined ) {
     
-    //Public Method
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Mana distribution (line)
     hearthGen.manaCost = function(data){
         $('#c_manaCost').highcharts({
             chart: {
@@ -43,16 +44,26 @@ $(document).ready(function() {
             },
             yAxis: {
                 title: {
-                    text: 'mana'
+                    text: null
                 },
                 min: 0,
-                max: 10,
                 allowDecimals: false,
                 gridLineWidth: 0
             },
             plotOptions: {
                 series: {
                     color: '#3399F3'
+                },
+                line:{
+                    lineWidth: 4,
+                    states: {
+                        hover: {
+                            lineWidth: 5
+                        }
+                    },
+                    marker: {
+                        enabled: false
+                    }
                 }
             },
             tooltip: {
@@ -67,6 +78,8 @@ $(document).ready(function() {
         });
     };
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Attack distribution (line)
     hearthGen.attackMinion = function(data){
         $('#c_attack').highcharts({
             chart: {
@@ -101,16 +114,26 @@ $(document).ready(function() {
             },
             yAxis: {
                 title: {
-                    text: 'attack'
+                    text: null
                 },
                 min: 0,
-                max: 10,
                 allowDecimals: false,
                 gridLineWidth: 0
             },
             plotOptions: {
                 series: {
                     color: '#bf9853'
+                },
+                line:{
+                    lineWidth: 4,
+                    states: {
+                        hover: {
+                            lineWidth: 5
+                        }
+                    },
+                    marker: {
+                        enabled: false
+                    }
                 }
             },
             tooltip: {
@@ -125,6 +148,8 @@ $(document).ready(function() {
         });
     };
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Health distribution (line)
     hearthGen.healthMinion = function(data){
         $('#c_health').highcharts({
             chart: {
@@ -159,16 +184,26 @@ $(document).ready(function() {
             },
             yAxis: {
                 title: {
-                    text: 'health'
+                    text: null
                 },
                 min: 0,
-                max: 10,
                 allowDecimals: false,
                 gridLineWidth: 0
             },
             plotOptions: {
                 series: {
                     color: '#CD0200'
+                },
+                line:{
+                    lineWidth: 4,
+                    states: {
+                        hover: {
+                            lineWidth: 5
+                        }
+                    },
+                    marker: {
+                        enabled: false
+                    }
                 }
             },
             tooltip: {
@@ -183,5 +218,51 @@ $(document).ready(function() {
         });
     };
 
-    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Minion distribution (Pie)
+    hearthGen.cardDistri = function(data){
+        $('#c_distri').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Minions vs. Spells'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            credits: {
+                enabled: false
+            },
+            legend: {
+                enabled: false
+            },
+            colors: ['#3FB618', '#007FFF'],
+            plotOptions: {
+                series: {
+                    dataLabels: { enabled: false }
+                },
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Cards',
+                data: [
+                    ['Spells',  13],
+                    ['Minions',   17]
+                ]
+            }]
+        });
+    };
 }( window.hearthGen = window.hearthGen || {}, jQuery ));

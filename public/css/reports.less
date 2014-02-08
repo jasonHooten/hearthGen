@@ -9,7 +9,31 @@
 
 // Reports
 .default-chart {
-	padding: 10px;
-	width: @report-default-width;
 	height: @report-default-height;
+}
+
+
+/* Hide for mobile, show later */
+.card-list {
+  display: none;
+}
+@media (min-width: 768px) {
+  .card-list {
+    //position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    //padding: 70px 20px 20px;
+    background-color: #f5f5f5;
+    //border-right: 1px solid #eee;
+    background-image: url('/img/class-image-druid.png');
+	background-repeat: no-repeat;
+	background-size: 200px;
+	background-position: 60px 10px;
+
+	.h2{
+
+	}
+  }
 }

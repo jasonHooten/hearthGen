@@ -1,0 +1,7 @@
+block content
+	h2= hero		
+	.pull-left
+		each card in cards
+			div
+				a(href=card.url, class='rarity-'+card.quality, rel='item='+ card.id)= card.name
+				span= ' x' + card.number

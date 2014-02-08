@@ -1,11 +1,11 @@
 var _ = require('underscore'),
 	cheerio = require('cheerio');
 
-serviceName = exports.name = "HearthPwn"
+serviceName = exports.name = "HearthPwn";
 
 exports.check = function(url){
 	return url.toLowerCase().indexOf('hearthpwn') >= 0;
-}
+};
 
 exports.run = function(html, callback){
 	if(!html) return callback('deck-import-hearthHead.run().dihp.11: called with no html.');
@@ -13,7 +13,7 @@ exports.run = function(html, callback){
 	var $ = cheerio.load(html);
 
 	// GRAB THE CARDS
-	var cards = _.map($('table td.col-name'), function(card) { 
+	var cards = _.map($('table td.col-name'), function(card) {
 		return { name: $(card).find('a').text(), number: ($(card).html().toLowerCase().indexOf('× 2') >= 0) ? 2 : 1 };
 	});
 
@@ -23,9 +23,9 @@ exports.run = function(html, callback){
 	}
 
 	var deck = {
-		hero: 'druid',
+		hero: 'Druid',
 		cards: cards
 	};
 
 	callback(null, deck);
-}
+};

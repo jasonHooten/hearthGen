@@ -13,6 +13,7 @@ exports.getIndex = function(req, res) {
 	var url = req.query.u;
 
 	deckImport.import(url, function(err, cardNames){
+		if(err) analysisError(err, res);
 		deckImport.load(cardNames.cards, function(err, deck){
 			if(err) analysisError(err, res);
 			if(!err){

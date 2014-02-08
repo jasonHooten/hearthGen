@@ -19,7 +19,9 @@ exports.load = function(cardNames, callback){
         _.extend(card, { url: hc_repo.getLink(card) });
         return card;
     });
-    callback(null, deck);
+
+
+    callback(null, hc_repo.sortByQuality(deck));
 };
 
 

@@ -40,15 +40,23 @@ body {
 #footer {
   height: 120px;
   padding-top: 20px;
-  color: @navbar-inverse-color;
+  color: @navbar-default-color;
   background-color: @navbar-default-bg;
   border-top: 1px solid @navbar-default-border;
+  position: relative;;
 }
 
 // Navbar
 // -------------------------
 
 @navbar-height: 45px;
+
+.navbar {
+    input {
+      height: 30px;
+      margin-top: 8px;
+    }
+}
 
 .navbar-brand {
   background-image: url('/img/logo.png');
@@ -59,9 +67,6 @@ body {
   margin-left: 15px;
   height: 45px; // same as navbar height
 }
-
-
-
 
 
 .navbar-nav .profile-image {
@@ -120,3 +125,42 @@ body {
 }
 
 
+// Card Classes
+/////////////////////////////////////////////////////////////////////////////////
+@legendary-color: #F07000;
+@epic-color: #AB48EE;
+@rare-color: #198EFF;
+@uncommon-color: #0FAF03;
+@common-color: #000000;
+
+[class^="-legendary"],
+[class*="-legendary"] {
+  color: @legendary-color !important;
+}
+
+[class^="-epic"],
+[class*="-epic"] {
+  color: @epic-color !important;
+}
+
+[class^="-rare"],
+[class*="-rare"] {
+  color: @rare-color !important;
+}
+
+[class^="-uncommon"],
+[class*="-uncommon"],
+[class^="-common"],
+[class*="-common"] {
+  color: @uncommon-color !important;
+}
+
+[class^="-free"],
+[class*="-free"] {
+  color: @common-color !important;
+}
+
+[class^="rarity-"],
+[class*="rarity-"] {
+  text-decoration: none;
+}
