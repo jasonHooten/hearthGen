@@ -23,14 +23,25 @@ exports.getIndex = function(req, res) {
 					//add underscore to the views
 					_: _,
 					//single numbers
-					manaAverage: Math.round(averagesService.mana(deck)),
-					attackAverage: Math.round(averagesService.attack(deck)),
-					healthAverage: Math.round(averagesService.health(deck)),
+					manaAverage: averagesService.mana(deck).toFixed(1),
+					numSpells: averagesService.numSpells(deck).toFixed(1),
+
+					attackAverage: averagesService.attack(deck).toFixed(1),
+					attackEarlyGame: averagesService.attackEarlyGame(deck).toFixed(1),
+					attackLateGame: averagesService.attackLateGame(deck).toFixed(1),
+					attackEff: averagesService.attackEff(deck).toFixed(1),
+
+					healthAverage: averagesService.health(deck).toFixed(1),
+					healthEarlyGame: averagesService.healthEarlyGame(deck).toFixed(1),
+					healthLateGame: averagesService.healthLateGame(deck).toFixed(1),
+					healthEff: averagesService.healthEff(deck).toFixed(1),
 					//lists for line graphs
 					manaList: listService.mana(deck),
 					attackList: listService.attack(deck),
 					healthList: listService.health(deck),
+					spellList: listService.spell(deck),
 					cardTypeList: listService.cardType(deck),
+
 					//starting hand
 					startingHand: startingHandService.list(deck),
 					cards: deck,

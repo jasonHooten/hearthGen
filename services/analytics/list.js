@@ -28,6 +28,14 @@ exports.mana = function(deck){
 };
 
 
+exports.spell = function(deck){
+    return _.map([0,1,2,3,4,5,6,7,8,9,10], function(cost){
+        var items = _.where(deck, { type: 'spell', mana: cost });
+        return items.length;
+    });
+};
+
+
 exports.cardType = function(deck){
     var minions = hc_repo.getManyByProperty({ type: 'minion' }, deck),
 		spells = hc_repo.getManyByProperty({ type: 'spell' }, deck);

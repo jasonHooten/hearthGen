@@ -1,0 +1,58 @@
+block content
+
+.row
+	.col-sm-4
+		h3
+			span#attack_stat
+			| Attack
+			small stats
+		ul.list-group
+			li.list-group-item 
+				| Average (Total) 
+				span.text-muted per card
+				span.badge= attackAverage
+			li.list-group-item(title='< 4mana') 
+				span.glyphicon.glyphicon-minus
+				|  Early Game 
+				span.text-muted per card
+				span.badge= attackEarlyGame
+			li.list-group-item(title='>= 4mana') 
+				span.glyphicon.glyphicon-minus
+				|  Late Game 
+				span.text-muted per card
+				span.badge= attackLateGame
+			li.list-group-item Efficiency 
+				span.text-muted per mana
+				span.badge= attackEff
+	.col-sm-4
+		h3 
+			span#health_stat
+			| Health
+			small stats
+		ul.list-group
+			li.list-group-item 
+				| Average (Total) 
+				span.text-muted per card
+				span.badge= healthAverage
+			li.list-group-item(title='< 4mana') 
+				span.glyphicon.glyphicon-minus
+				|  Early Game 
+				span.text-muted per card
+				span.badge= healthEarlyGame
+			li.list-group-item(title='>= 4mana') 
+				span.glyphicon.glyphicon-minus
+				|  Late Game 
+				span.text-muted per card
+				span.badge= healthLateGame
+			li.list-group-item Efficiency (per Mana)
+				span.badge= healthEff
+	.col-sm-4
+		h3
+			span#spell_stat
+			| Spells
+			small stats
+		ul.list-group
+			li.list-group-item # of cards
+				span.badge= cardTypeList.spell
+			li.list-group-item Average Cost
+				span.badge= numSpells

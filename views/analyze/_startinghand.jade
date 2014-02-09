@@ -1,18 +1,18 @@
 block content
 
-
-#starting_hand.col-xs-12.col-sm-9.col-md-10
-	h3 Possible Starting Hand
-	.help-block Reload the page to see a new card list.
-	.row
-		each card in startingHand.hand
-			.col-sm-6.col-md-2
-				a(rel='item=' + card.id, href=card.url)
-					img(src=card.image, position='top')
-		.col-sm-6.col-md-3.col-md-offset-1
-			b
-				u Next 10 cards
-				ol
-					each card in startingHand.nextTen
-						li
-							a(href=card.url, class='rarity-'+card.quality, rel='item='+ card.id)= card.name
+.row
+	#starting_hand
+		h3 Possible Starting Hand
+		.help-block Reload the page to see a new card list.
+		.row
+			each card in startingHand.hand
+				.col-xs-6.col-sm-3.col-md-2
+					a(rel='item=' + card.id, href=card.url)
+						img(src=card.image, position='top')
+			.col-xs-6.col-sm-4.col-md-3.col-md-offset-1
+				b
+					u Next 10 cards
+					ol
+						each card in startingHand.nextTen
+							li
+								a(href=card.url, class='rarity-'+card.quality, rel='item='+ card.id)= card.name
