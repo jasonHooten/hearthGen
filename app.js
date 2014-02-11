@@ -13,6 +13,8 @@ var expressValidator = require('express-validator');
 
 var app = express();
 
+process.env.PWD = process.cwd();
+
 /**
  * Load controllers.
  */
@@ -47,7 +49,7 @@ var month = (day * 30);
 
 app.locals.cacheBuster = Date.now();
 app.set('port', process.env.PORT || 1337);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(process.env.PWD, 'views'));
 app.set('view engine', 'jade');
 app.use(express.compress());
 app.use(express.favicon());
@@ -66,9 +68,9 @@ app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
-app.use(less({ src: __dirname + '/public', compress: true }));
+app.use(less({ src: process.env.PWD + '/public', compress: true }));
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: week }));
+app.use(express.static(path.join(process.env.PWD, 'public'), { maxAge: week }));
 app.use(function(req, res) {
   res.render('404', { status: 404 });
 });
@@ -110,4 +112,4 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedi
 
 app.listen(app.get('port'), function() {
   console.log("✔ Express server listening on port %d in %s mode", app.get('port'), app.settings.env);
-});  
+});
