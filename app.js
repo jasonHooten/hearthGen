@@ -3,11 +3,11 @@
  */
 
 var express = require('express');
-var MongoStore = require('connect-mongo')(express);
+//var MongoStore = require('connect-mongo')(express);
 var flash = require('express-flash');
 var less = require('less-middleware');
 var path = require('path');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 var passport = require('passport');
 var expressValidator = require('express-validator');
 
@@ -30,14 +30,6 @@ var analyzeController = require('./controllers/analyze');
 var secrets = require('./config/secrets');
 var passportConf = require('./config/passport');
 
-/**
- * Mongoose configuration.
- */
-
-mongoose.connect(secrets.db);
-mongoose.connection.on('error', function() {
-  console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
-});
 
 
 /**
@@ -61,13 +53,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
-app.use(express.session({
-  secret: 'your secret code',
-  store: new MongoStore({
-    db: mongoose.connection.db,
-    auto_reconnect: true
-  })
-}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
