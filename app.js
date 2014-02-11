@@ -4,7 +4,7 @@
 
 var express = require('express');
 //var MongoStore = require('connect-mongo')(express);
-var flash = require('express-flash');
+//var flash = require('express-flash');
 var less = require('less-middleware');
 var path = require('path');
 //var mongoose = require('mongoose');
@@ -30,7 +30,11 @@ var analyzeController = require('./controllers/analyze');
 var secrets = require('./config/secrets');
 var passportConf = require('./config/passport');
 
+/**
+ * Mongoose configuration.
+ */
 
+//
 
 /**
  * Express configuration.
@@ -53,14 +57,15 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
-
+app.use(express.session({
+  secret: 'your secret code'
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
-app.use(flash());
 app.use(less({ src: __dirname + '/public', compress: true }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: week }));
