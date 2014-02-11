@@ -18,9 +18,9 @@ block content
 
 	script.
 		$(document).ready(function() {
-			$('#attack_stat').sparkline(!{JSON.stringify(attackList)}, { type: 'bar', barColor: '#bf9853' });
-			$('#health_stat').sparkline(!{JSON.stringify(healthList)}, { type: 'bar', barColor: '#CD0200' });
-			$('#spell_stat').sparkline(!{JSON.stringify(spellList)}, { type: 'bar', barColor: '#3399F3' });
+			$('#attack_stat').sparkline(!{JSON.stringify(attackList)}, { type: 'bar', barColor: '#bf9853', tooltipFormat: '{{value}} cards at {{offset}} attack' });
+			$('#health_stat').sparkline(!{JSON.stringify(healthList)}, { type: 'bar', barColor: '#CD0200', tooltipFormat: '{{value}} cards at {{offset}} health' });
+			$('#spell_stat').sparkline(!{JSON.stringify(spellList)}, { type: 'bar', barColor: '#3399F3',   tooltipFormat: '{{value}} spells at {{offset}} mana' });
 
 			hearthGen.manaCost(!{JSON.stringify(manaList)}, !{manaAverage});
 			hearthGen.attackMinion(!{JSON.stringify(attackList)}, !{attackAverage});
