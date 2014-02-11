@@ -16,7 +16,7 @@ html(lang="en")
     script(src='/js/lib/jquery.js?v=#{cacheBuster}')
     script(src='/js/lib/bootstrap.js?v=#{cacheBuster}')
   
-  - var heroIcon = ( hero ? 'background-image: url("/img/class-image-' + hero + '.png");' : '')
+  - var heroIcon = ( hero ? 'background-image: url("img/class-image-' + hero + '.png");' : '')
   body.hero-image(style=heroIcon)
     #wrap
       include partials/navigation
